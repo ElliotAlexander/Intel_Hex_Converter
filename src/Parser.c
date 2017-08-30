@@ -20,7 +20,7 @@ void parse_to_IHEX(FILE* input){
 			printf("Line : \n	%s", ASCII_val_hex);
 		}
 
-		if(strlen(address) > 
+		//if(strlen(address) > 
 
 		fprintf(input, ":%02X%s00%s", byte_count, address, ASCII_val_hex);
 		line_index++;

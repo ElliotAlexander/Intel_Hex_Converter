@@ -2,7 +2,7 @@
 
 FILE* load_File(char* input_file_name){
 	FILE* fp;
-	fp = fopen(input_file_name, "w+");
+	fp = fopen(input_file_name, "r+");
 
 	if(fp){
 		printf("File loaded successfully\n");

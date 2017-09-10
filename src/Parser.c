@@ -1,13 +1,14 @@
 #include "Parser.h"
 
 void parse_file_IHEX(FILE* input){
-	char* next_line = malloc(sizeof(char) * 4096);
+	char* line = malloc(sizeof(char) * 256);
 	int line_index = 0;
 	int byte_count = 0;
-	
-	while((fgets (next_line, 60, input) != NULL)){
 
-		char* address = strtok(next_line, "\t");
+	while(fgets(line, sizeof(line), input)){
+
+			printf("%s\n", line);
+		char* address = strtok(line, "\t");
 		char* ASCII_val = strtok(NULL, "\t");
 		char* ASCII_val_hex = convert_To_Hex(ASCII_val);
 	
@@ -23,7 +24,5 @@ void parse_file_IHEX(FILE* input){
 
 
 		line_index++;
-
-		printf("1\n");
 	}
 }	

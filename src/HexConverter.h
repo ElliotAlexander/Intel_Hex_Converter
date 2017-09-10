@@ -1,9 +1,8 @@
 #ifndef HEX_CONVERTER_H
 #define HEX_CONVERTER_h
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "Main.h"
 
-char* convert_To_Hex(char* input_String);
+char* convert_To_Hex(char*);
 
 #endif

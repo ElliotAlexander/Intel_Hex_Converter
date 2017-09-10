@@ -52,7 +52,11 @@ output\FileManager.obj: \
 # 
 output\HexConverter.obj: \
 	src\HexConverter.c \
-	src\HexConverter.h
+	src\FileManager.h \
+	src\HexConverter.h \
+	src\IHEX.h \
+	src\Main.h \
+	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
 
 # 
@@ -62,7 +66,6 @@ output\Main.obj: \
 	src\Main.c \
 	src\FileManager.h \
 	src\HexConverter.h \
-	src\IHEX.h \
 	src\Main.h \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
@@ -74,7 +77,6 @@ output\Parser.obj: \
 	src\Parser.c \
 	src\FileManager.h \
 	src\HexConverter.h \
-	src\IHEX.h \
 	src\Main.h \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
@@ -84,7 +86,11 @@ output\Parser.obj: \
 # 
 output\IHEX.obj: \
 	src\IHEX.c \
-	src\IHEX.h
+	src\FileManager.h \
+	src\HexConverter.h \
+	src\IHEX.h \
+	src\Main.h \
+	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
 
 .EXCLUDEDFILES:

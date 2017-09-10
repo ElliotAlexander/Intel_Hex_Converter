@@ -2,11 +2,13 @@
 
 char* G_OUTPUT_FILE_NAME = "output.txt";
 
+int file_input_bool = 0;
+int file_output_bool = 0;
+char* input_file;
+
 int main(int argc, char** argv){
 	
 	printf("Arguments loaded: %d\n", argc-1);
-
-	char* file_name;
 
 	if(argc < 2 ){
 		printf("Error loading arguments - No arguments found\n");
@@ -25,8 +27,9 @@ int main(int argc, char** argv){
 			switch(argInt) {
 				case 70: {			// -F argument.
 					if(argv[x+1] != NULL && argv[x+1][0] != '-'){
-						file_name = argv[x+1];
-						printf("Loaded file: %s\n", file_name);
+						input_file = argv[x+1];
+						file_input_bool = 1;
+						printf("Loaded file: %s\n", input_file);
 						x++;
 					} else {
 						// will print as ((null)) if not set.
@@ -35,13 +38,28 @@ int main(int argc, char** argv){
 					}
 					break;
 				}
+
+				case 79:
+				{
+					if(argv[x+1] != NULL){
+						G_OUTPUT_FILE_NAME = argv[x+1];
+						printf("Saving to file output with name %s.\n", G_OUTPUT_FILE_NAME);
+
+					} else {
+						file_output_bool = 1;
+						printf("Saving to file output with default name %s.\n", G_OUTPUT_FILE_NAME);
+					}
+					break;
+				}
 			}
 		} else {
 			printf("Unknown argument!\n");
 		}
 	}
-	FILE* fp = load_File(file_name);
-	parse_to_IHEX(fp);
+	
 
+	if(file_input_bool){
+		load_File(input_file);
+	}
 
 }

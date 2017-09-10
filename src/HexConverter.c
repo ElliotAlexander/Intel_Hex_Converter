@@ -5,7 +5,7 @@
 char* convert_To_Hex(char* input_string){
 
 	if(input_string == NULL){
-		printf("No input string entered. Returning null.");
+		printf("ERROR - Null String (HexConverter.c)\n");
 		return NULL;
 	}
 

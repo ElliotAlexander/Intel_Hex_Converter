@@ -7,7 +7,9 @@ POC_PROJECT_VERSION = 7.00#
 POC_PROJECT_TYPE = 3#
 POC_PROJECT_OUTPUTDIR = output#
 POC_PROJECT_RESULTDIR = .#
-POC_PROJECT_ARGUMENTS = #
+POC_PROJECT_ARGUMENTS = -F example.txt#
+POC_PROJECT_WORKPATH = src#
+POC_PROJECT_EXECUTOR = #
 POC_PROJECT_ZIPEXTRA = #
 CC = pocc.exe#
 AS = poasm.exe#
@@ -29,7 +31,8 @@ LIB = $(PellesCDir)\Lib\Win;$(PellesCDir)\Lib#
 	output\FileManager.obj \
 	output\HexConverter.obj \
 	output\Main.obj \
-	output\Parser.obj
+	output\Parser.obj \
+	output\IHEX.obj
 	$(LINK) $(LINKFLAGS) -out:"$@" $**
 
 # 
@@ -37,7 +40,11 @@ LIB = $(PellesCDir)\Lib\Win;$(PellesCDir)\Lib#
 # 
 output\FileManager.obj: \
 	src\FileManager.c \
-	src\FileManager.h
+	src\FileManager.h \
+	src\HexConverter.h \
+	src\IHEX.h \
+	src\Main.h \
+	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
 
 # 
@@ -55,6 +62,7 @@ output\Main.obj: \
 	src\Main.c \
 	src\FileManager.h \
 	src\HexConverter.h \
+	src\IHEX.h \
 	src\Main.h \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
@@ -66,8 +74,19 @@ output\Parser.obj: \
 	src\Parser.c \
 	src\FileManager.h \
 	src\HexConverter.h \
+	src\IHEX.h \
 	src\Main.h \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
+
+# 
+# Build IHEX.obj.
+# 
+output\IHEX.obj: \
+	src\IHEX.c \
+	src\IHEX.h
+	$(CC) $(CCFLAGS) "$!" -Fo"$@"
+
+.EXCLUDEDFILES:
 
 .SILENT:

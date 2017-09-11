@@ -18,6 +18,5 @@ void parse_file_IHEX(FILE* input){
 		}
 
 		fprintf(input, ":%02X%s00%s", byte_count, address, ASCII_val_hex);
-		
 	}
 }	

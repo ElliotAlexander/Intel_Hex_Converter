@@ -6,5 +6,7 @@
 #include <String.h>
 
 #include "FileManager.h"
+	
+extern char* G_OUTPUT_FILE_NAME;
 
 #endif

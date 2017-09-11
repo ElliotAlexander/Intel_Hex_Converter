@@ -30,9 +30,9 @@ LIB = $(PellesCDir)\Lib\Win;$(PellesCDir)\Lib#
 "Intel Hex Converter.exe": \
 	output\FileManager.obj \
 	output\HexConverter.obj \
+	output\IHEX.obj \
 	output\Main.obj \
-	output\Parser.obj \
-	output\IHEX.obj
+	output\Parser.obj
 	$(LINK) $(LINKFLAGS) -out:"$@" $**
 
 # 
@@ -42,6 +42,7 @@ output\FileManager.obj: \
 	src\FileManager.c \
 	src\FileManager.h \
 	src\HexConverter.h \
+	src\IHEX.h \
 	src\Main.h \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
@@ -92,6 +93,6 @@ output\IHEX.obj: \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"
 
-.EXCLUDEDFILES:
-
 .SILENT:
+
+.EXCLUDEDFILES:

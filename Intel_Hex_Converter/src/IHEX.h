@@ -3,4 +3,6 @@
 
 #include "Main.h"
 
+void end_IHEX_file(FILE*);
+
 #endif

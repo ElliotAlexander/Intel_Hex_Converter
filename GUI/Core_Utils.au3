@@ -1,3 +1,6 @@
+#include <AutoItConstants.au3>
+
+
 Func Common_Run_Program($Input_Script, $Output_Box)
    $Output_Box_Data = GUICtrlRead($Output_Box)
    ;; A null output box is fine.
@@ -7,15 +10,18 @@ Func Common_Run_Program($Input_Script, $Output_Box)
    EndIf
 
 
-   $foo = Run(@ComSpec & " /c dir" + $Input_Stript, "", @SW_HIDE, $STDOUT_CHILD + $STDIN_CHILD);
+   $foo = Run(@ComSpec & " /c " & $Input_Script, "", @SW_HIDE, $STDOUT_CHILD + $STDIN_CHILD);
 
    While($foo)
-	  $Output_Box_Data_Edit = StdoutRead($foo)
-	  Common_WriteLine($Output_Box_Data_Edit, $Output_Box)
+	  $Output_Box_Data_Edit = StdoutRead($foo, False, False)
+	  if($Output_Box_Data_Edit <> "") Then
+		 Common_WriteLine($Output_Box_Data_Edit, $Output_Box)
+	  EndIf
+
 
 	  If(@error) Then
 		 Common_WriteLine("Error! Problem running script " + $Input_Script, $Output_Box)
-		 Break
+		 ExitLoop
 	  EndIf
 
    WEnd

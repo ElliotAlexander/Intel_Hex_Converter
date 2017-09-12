@@ -17,8 +17,15 @@ FILE* load_File(char* input_file_name){
 
 
 FILE* open_output(void){
+
 	FILE* fp;
-	fp = fopen(G_OUTPUT_FILE_NAME, "w+");
+	if(G_APPEND_FILE == 1){
+		fp = fopen(G_OUTPUT_FILE_NAME, "a+");
+	} else {
+		fp = fopen(G_OUTPUT_FILE_NAME, "w+");
+	}
+
+
 	if(fp){
 		return fp;
 	} else {

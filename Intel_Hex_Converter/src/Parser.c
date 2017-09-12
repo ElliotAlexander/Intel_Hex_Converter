@@ -10,7 +10,6 @@ void parse_file_IHEX(FILE* input){
 		char* ASCII_val = strtok(NULL, "\t");
 		char* ASCII_val_hex = convert_To_Hex(ASCII_val);
 
-
 		byte_count = strlen(ASCII_val_hex) / 2;		
 		int x = 2+strlen(ASCII_val_hex)+strlen(address)+1;
 		char print_str[x];
@@ -22,6 +21,7 @@ void parse_file_IHEX(FILE* input){
 		//char print_str[] = ":0300300002337A";
 
 		unsigned int sum = 0;
+
 		// Ignore the colon, iterate from index 1 -> x+1
 		for(int i = 1; i < (x+1);){
 			char* next_hex = malloc(sizeof(char) * 2);
@@ -31,7 +31,6 @@ void parse_file_IHEX(FILE* input){
 		}
 
 		unsigned int checksum = ((~sum)+1) & 0x000000FF;
-		printf("Checksum: %02X\n", checksum);
 		fprintf(output, ":%02X%s00%s%02X\n", byte_count, address, ASCII_val_hex, checksum);
 	}
 }	

@@ -1,6 +1,7 @@
 #include "Main.h"
 
 char* G_OUTPUT_FILE_NAME = "output.txt";
+int G_APPEND_FILE = 0;
 
 int file_input_bool = 0;
 int file_output_bool = 0;
@@ -49,6 +50,13 @@ int main(int argc, char** argv){
 						file_output_bool = 1;
 						printf("Saving to file output with default name %s.\n", G_OUTPUT_FILE_NAME);
 					}
+					break;
+				}
+
+				case 65:
+				{
+					G_APPEND_FILE = 1;
+					printf("Using output mode 'Append'");
 					break;
 				}
 			}

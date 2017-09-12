@@ -33,6 +33,10 @@ void parse_file_IHEX(FILE* input){
 		unsigned int checksum = ((~sum)+1) & 0x000000FF;
 		fprintf(output, ":%02X%s00%s%02X\n", byte_count, address, ASCII_val_hex, checksum);
 	}
+
+		if(G_terminate_file_bool==1){
+			fprintf(output, ":00000001FF");	
+		}
 }	
 
 

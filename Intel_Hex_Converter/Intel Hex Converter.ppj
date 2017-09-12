@@ -42,7 +42,6 @@ output\FileManager.obj: \
 	src\FileManager.c \
 	src\FileManager.h \
 	src\HexConverter.h \
-	src\IHEX.h \
 	src\Main.h \
 	src\Parser.h
 	$(CC) $(CCFLAGS) "$!" -Fo"$@"

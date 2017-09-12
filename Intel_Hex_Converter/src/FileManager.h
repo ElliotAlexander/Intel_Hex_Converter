@@ -7,5 +7,6 @@
 
 
 FILE* load_File(char*);
+FILE* open_output(void);
 
 #endif

@@ -6,7 +6,7 @@
 #include "Parser.h"
 
 
-FILE* load_File(char*);
+FILE* open_input(char*);
 FILE* open_output(void);
 
 #endif

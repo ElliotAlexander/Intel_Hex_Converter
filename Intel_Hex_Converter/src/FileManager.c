@@ -18,7 +18,7 @@ FILE* load_File(char* input_file_name){
 
 FILE* open_output(void){
 	FILE* fp;
-	fp = fopen(G_OUTPUT_FILE_NAME, "a+");
+	fp = fopen(G_OUTPUT_FILE_NAME, "w+");
 	if(fp){
 		return fp;
 	} else {

@@ -1,6 +1,6 @@
 #include "FileManager.h"
 
-FILE* load_File(char* input_file_name){
+FILE* open_input(char* input_file_name){
 	FILE* fp;
 	fp = fopen(input_file_name, "r");
 

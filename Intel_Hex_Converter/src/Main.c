@@ -83,7 +83,7 @@ int main(int argc, char** argv){
 	}
 
 	if(file_input_bool){
-		FILE* fp = load_File(input_file);
+		FILE* fp = open_input(input_file);
 		parse_file_IHEX(fp);
 	}
 }

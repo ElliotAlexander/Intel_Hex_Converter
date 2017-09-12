@@ -21,7 +21,7 @@ Pass in input and output arguments.
     -A    // Append to end of output file. Overwrites existing files by default.
 
 
-    -T    // Terminate the file with an EOF record. See [Intel Hex](https://en.wikipedia.org/wiki/Intel_HEX) 01 Date type.
+    -T    // Terminate the file with an EOF record.
 
 
     -H    // Print help text (basically this document).

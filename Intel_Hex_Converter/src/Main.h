@@ -6,6 +6,7 @@
 #include <String.h>
 
 #include "FileManager.h"
+#include "Utils.h"
 	
 extern char* G_OUTPUT_FILE_NAME;
 int G_APPEND_FILE;

@@ -54,7 +54,7 @@ int main(int argc, char** argv){
 					break;
 				}
 
-				case 65:
+				case 65:			// A - Append File
 				{
 					G_APPEND_FILE = 1;
 					printf("Using output mode 'Append'\n");
@@ -67,19 +67,19 @@ int main(int argc, char** argv){
 					printf("Terminating file on completion.\n");
 					break;
 				}
+
+				case 72: 
+				{
+					print_help();
+				}
 			}
 		} else {
 			printf("Unknown argument!\n");
 		}
 	}
-	
 
 	if(file_input_bool){
 		FILE* fp = load_File(input_file);
 		parse_file_IHEX(fp);
-
 	}
-
-
-
 }

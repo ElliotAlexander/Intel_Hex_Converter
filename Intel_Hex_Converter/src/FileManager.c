@@ -2,11 +2,10 @@
 
 FILE* load_File(char* input_file_name){
 	FILE* fp;
-	fp = fopen(input_file_name, "r+");
+	fp = fopen(input_file_name, "r");
 
 	if(fp){
 		printf("File loaded successfully\n");
-		
 		return fp;
 	} else {
 		printf("Error loading file! Exiting. \n");
@@ -18,6 +17,8 @@ FILE* load_File(char* input_file_name){
 FILE* open_output(void){
 
 	FILE* fp;
+
+	// Toggleable file mode.
 	if(G_APPEND_FILE == 1){
 		fp = fopen(G_OUTPUT_FILE_NAME, "a+");
 	} else {

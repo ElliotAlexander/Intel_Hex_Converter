@@ -19,6 +19,9 @@ int main(int argc, char** argv){
 
 	for(int x = 1; x < argc; x++){
 		if(argv[x][0] == '-'){
+			
+			// DEBUG
+			//printf("Parsing arg  -%c\n", argv[x][1]);
 			char arg = argv[x][1];
 			int argInt = arg;
 
@@ -41,12 +44,13 @@ int main(int argc, char** argv){
 					break;
 				}
 
-				case 79:
+				case 79:			// -O Output
 				{
 					if(argv[x+1] != NULL){
 						G_OUTPUT_FILE_NAME = argv[x+1];
 						printf("Saving to file output with name %s.\n", G_OUTPUT_FILE_NAME);
-
+						// Skip next arg.
+						x++;
 					} else {
 						file_output_bool = 1;
 						printf("Saving to file output with default name %s.\n", G_OUTPUT_FILE_NAME);
@@ -68,7 +72,7 @@ int main(int argc, char** argv){
 					break;
 				}
 
-				case 72: 
+				case 72: 			// -H Help Text
 				{
 					print_help();
 				}

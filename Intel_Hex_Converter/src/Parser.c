@@ -6,6 +6,11 @@ void parse_file_IHEX(FILE* input){
 	FILE* output = open_output();
 
 	while(fgets(line, sizeof(line), input)){
+		if(line[0] == ';'){
+			continue;
+		}
+
+		// Parse values from columns of each line.
 		char* address = strtok(line, "\t");
 		char* ASCII_val = strtok(NULL, "\t");
 		char* ASCII_val_hex = convert_To_Hex(ASCII_val);
@@ -15,10 +20,13 @@ void parse_file_IHEX(FILE* input){
 		char print_str[x];
 		sprintf(print_str, ":%02X%s00%s", byte_count, address, ASCII_val_hex);
 
+
+
 		// DEBUG		- Example given on the IntelHex wiki page :)
 		// Useful for checking my maths 
 		//int x = 14;
 		//char print_str[] = ":0300300002337A";
+
 
 		unsigned int sum = 0;
 
@@ -30,13 +38,16 @@ void parse_file_IHEX(FILE* input){
 			i += 2;
 		}
 
+		// Twos complement + bitmask.
 		unsigned int checksum = ((~sum)+1) & 0x000000FF;
+
+		// Print final string.
 		fprintf(output, ":%02X%s00%s%02X\n", byte_count, address, ASCII_val_hex, checksum);
 	}
 
-		if(G_terminate_file_bool==1){
-			fprintf(output, ":00000001FF");	
-		}
+	if(G_terminate_file_bool==1){
+		fprintf(output, ":00000001FF");	
+	}
 }	
 
 

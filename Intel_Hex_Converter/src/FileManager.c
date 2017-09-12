@@ -7,7 +7,6 @@ FILE* load_File(char* input_file_name){
 	if(fp){
 		printf("File loaded successfully\n");
 		parse_file_IHEX(fp);
-		end_IHEX_file(fp);
 		return fp;
 	} else {
 		printf("Error loading file! Exiting. \n");

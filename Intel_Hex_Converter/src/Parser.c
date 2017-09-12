@@ -3,6 +3,7 @@
 void parse_file_IHEX(FILE* input){
 	char line[256];
 	int byte_count = 0;
+	FILE* output = open_output();
 
 	while(fgets(line, sizeof(line), input)){
 		char* address = strtok(line, "\t");
@@ -31,10 +32,7 @@ void parse_file_IHEX(FILE* input){
 
 		unsigned int checksum = ((~sum)+1) & 0x000000FF;
 		printf("Checksum: %02X\n", checksum);
-
-
-		FILE* output = open_output();
-		fprintf(output, ":%02X%s00%s%02X", byte_count, address, ASCII_val_hex, checksum);
+		fprintf(output, ":%02X%s00%s%02X\n", byte_count, address, ASCII_val_hex, checksum);
 	}
 }	
 

@@ -1,6 +1,6 @@
-.tag
-.ppj
-.ppx
+*.tag
+*.ppj
+*.ppx
 /Intel_Hex_Converter/output/
 
-.exe
+*.exe

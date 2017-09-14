@@ -13,7 +13,11 @@ void parse_file_IHEX(FILE* input){
 		// Parse values from columns of each line.
 		char* address = strtok(line, "\t");
 		char* ASCII_val = strtok(NULL, "\t");
-		char* ASCII_val_hex = convert_To_Hex(ASCII_val);
+		char* ASCII_val_hex = malloc(sizeof(char) * strlen(ASCII_val) * 2);
+		
+		for(unsigned int i = 0; i < strlen(ASCII_val); i++){
+			sprintf(ASCII_val_hex+(i*2), "%02X", ASCII_val[i]);
+		}
 
 		byte_count = strlen(ASCII_val_hex) / 2;		
 		int x = 2+strlen(ASCII_val_hex)+strlen(address)+1;
